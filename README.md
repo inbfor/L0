@@ -26,4 +26,25 @@
 * Nats-streaming разверните локально (не путать с Nats).
 
 ## Инструкция по запуску
-Запустить launch.sh
+
+1.
+```shell
+make start-docker
+make pub
+```
+2.
+```shell
+make sub
+```
+3.
+```shell
+make stop-docker
+```
+
+### Работа:
+___
+
+По умолчанию доступ к данным в кэше через http осуществляется следующим запросом:
+`localhost:8100/getOrder/:id`
+
+Для записи данных в NATS необходимо скопировать JSON в папку ./pub/jsons и в процессе pub указать имя json файла.

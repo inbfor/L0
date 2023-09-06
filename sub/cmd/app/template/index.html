@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Orders</title>
+    <style>
+        html{
+            background-color: #323232;
+        }
+        body{
+            color: #fab92c;
+
+        }
+        header{
+            padding: 4px;
+            margin-top: 0;
+            margin-bottom: 3px;
+            background: linear-gradient(to top,  #363636, #414141);
+            width: 100%;
+            text-align: center;
+            font-size: 140%;
+            border-bottom: 1px black solid;
+        }
+        .request {
+            text-align: center;
+        }
+        #block {
+            background-color: white;
+            margin-left: auto;
+            margin-right: auto;
+            width: 25em;
+            border: 2px solid #fab92c;
+            border-radius: 5px;
+            position: relative; 
+            
+        }
+        #response {
+            color: black;
+            word-wrap: break-word;
+            overflow: auto; 
+            
+        }
+        </style>
+        <script>
+            function getHandler() { 
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', "http://localhost:8100/getOrder/".concat(document.getElementById("input").value), true);
+                xhr.responseType = 'json';
+                xhr.onload = function() {
+                    var div = document.getElementById("response");
+                    div.innerText= JSON.stringify(xhr.response, null, ' ');
+                };
+                xhr.send();
+           }
+        </script>
+</head>
+<body>
+    <header>
+        Orders
+    </header>
+   <div class="request">
+    <form>
+        <input type="text" id="input"/>
+        <button type="button" onclick="getHandler()">Get by ID</button>
+        </form>
+        <div id="block">
+            <p id="response"></p>
+        </div>
+    </div>
+</body>
+</html>

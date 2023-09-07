@@ -36,7 +36,9 @@ make pub
 ```shell
 make sub
 ```
-3.
+
+
+Как выключить сервис.
 ```shell
 make stop-docker
 ```
